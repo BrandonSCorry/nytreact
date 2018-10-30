@@ -68,7 +68,7 @@ class Search extends Component {
               <Input
                 value={this.state.topic}
                 onChange={this.handleInputChange}
-                name="title"
+                name="topic"
                 placeholder="Topic (Required)"
               />
               <Input
