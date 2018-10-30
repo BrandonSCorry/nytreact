@@ -25,7 +25,7 @@ export default {
 
     const startDate = `&begin_date=${start}0101`;
 
-    const endDate = `&end_date=${end}0101`;
+    const endDate = `&end_date=${end}1231`;
 
     let searchQuery = searchTerm;
 
