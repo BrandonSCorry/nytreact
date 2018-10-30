@@ -101,7 +101,7 @@ class Search extends Component {
                   <ListItem key={article._id}>
                       <a href={article.web_url} target='_blank'>
                         <strong>
-                          {article.headline.main} on {moment(article.pub_date).format("ddd, MMM Do YYYY, h:m a")}
+                          {article.headline.main} on {moment(article.pub_date).format("ddd, MMM Do YYYY, h:mm a")}
                         </strong>
                       </a>
                     <SaveBtn onClick={() => this.handleSave} />
