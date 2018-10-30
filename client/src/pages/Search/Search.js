@@ -15,6 +15,9 @@ class Search extends Component {
   state = {
     articles: [],
     title: "",
+    date: "",
+    url: "",
+    topic: "",
     start: "",
     end: "",
     output: false
@@ -30,7 +33,7 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.searchArticles(this.state.title, this.state.start, this.state.end)
+    API.searchArticles(this.state.topic, this.state.start, this.state.end)
       .then(res => {
         this.setState ({
           articles: res.data.response.docs,
@@ -45,9 +48,9 @@ class Search extends Component {
   handleSave = (event, id) => {
     event.preventDefault();
     API.saveArticle({
-      title: this.state.title,
-      date: this.state.date,
-      url: this.state.url
+      title: this.state.articles.headline.main,
+      date: this.state.articles.pub_date,
+      url: this.state.articles.web_url
     })
       .then(res => alert('Article saved successfully!'))
       .catch(err => console.log(err));
@@ -63,7 +66,7 @@ class Search extends Component {
             </Jumbotron>
             <form>
               <Input
-                value={this.state.title}
+                value={this.state.topic}
                 onChange={this.handleInputChange}
                 name="title"
                 placeholder="Topic (Required)"
@@ -81,7 +84,7 @@ class Search extends Component {
                 placeholder="End Year (Optional)"
               />
               <FormBtn
-                disabled={!(this.state.title)}
+                disabled={!(this.state.topic)}
                 onClick={this.handleFormSubmit}
               >
                 Search NYT
